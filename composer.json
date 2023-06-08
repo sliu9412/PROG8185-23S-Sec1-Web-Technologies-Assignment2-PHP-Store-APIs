@@ -1,0 +1,17 @@
+{
+    "name": "user/back_end",
+    "autoload": {
+        "psr-4": {
+            "User\\BackEnd\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sliu9412",
+            "email": "sliu9412@conestogac.on.ca"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.5"
+    }
+}
