@@ -33,5 +33,4 @@ function ApiWrapper(callable $func, $request_method = "POST", ...$args)
         $error_message = $e->getMessage();
         JsonResponse("Request Error, $error_message", status: $e->getCode());
     }
-    return $func(...$args);
 }
