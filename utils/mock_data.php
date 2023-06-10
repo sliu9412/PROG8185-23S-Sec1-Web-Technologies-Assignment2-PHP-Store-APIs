@@ -44,44 +44,44 @@ $mock_users = [
 
 $mock_products = [
     [
-        "name" => "product 1",
-        "price" => 1,
-        "img" => "images/product 1",
+        "name" => "Nikon DSLR",
+        "price" => 1510.0,
+        "img" => "images/NikonDSLR.jpg",
         "shipping_cost" => 2.0,
         "description" => "This is a description of this product"
     ],
     [
-        "name" => "product 2",
-        "price" => 2,
-        "img" => "images/product 2",
+        "name" => "Cannon DSLR",
+        "price" => 999.0,
+        "img" => "images/CannonDSLR.jpg",
         "shipping_cost" => 2.0,
         "description" => "This is a description of this product"
     ],
     [
-        "name" => "product 3",
-        "price" => 3,
-        "img" => "images/product 3",
+        "name" => "Sony DSLR",
+        "price" => 499.0,
+        "img" => "images/SONYDSLR.jpg",
         "shipping_cost" => 2.0,
         "description" => "This is a description of this product"
     ],
     [
-        "name" => "product 4",
-        "price" => 4,
-        "img" => "images/product 4",
+        "name" => "Cannon 28mm Lens",
+        "price" => 150.0,
+        "img" => "images/28mm.jpg",
         "shipping_cost" => 2.0,
         "description" => "This is a description of this product"
     ],
     [
-        "name" => "product 5",
-        "price" => 5,
-        "img" => "images/product 5",
+        "name" => "Nikon 50mm Lens",
+        "price" => 200.0,
+        "img" => "images/50mm.jpg",
         "shipping_cost" => 2.0,
         "description" => "This is a description of this product"
     ],
     [
-        "name" => "product 6",
-        "price" => 6,
-        "img" => "images/product 6",
+        "name" => "Sony 28mm Lens",
+        "price" => 150.0,
+        "img" => "images/28mm.jpg",
         "shipping_cost" => 2.0,
         "description" => "This is a description of this product"
     ],
