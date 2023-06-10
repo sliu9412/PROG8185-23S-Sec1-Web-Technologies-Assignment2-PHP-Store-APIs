@@ -1,7 +1,7 @@
 <?php
 require_once("../../utils/connect_db.php");
 
-function productDisplay()
+function ProductDisplay()
 {
     $table_name = "product";
 
@@ -30,5 +30,5 @@ function productDisplay()
     }
 }
 
-ApiWrapper("productDisplay");
+ApiWrapper("ProductDisplay", "GET");
 ?>
