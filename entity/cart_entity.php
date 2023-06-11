@@ -1,7 +1,7 @@
 <?php
 class CartItem {
-    public $user_id;
-    public $product_id;
-    public $quentity;
+    public int $user_id;
+    public int $product_id;
+    public int $quantity;
 }
 ?>

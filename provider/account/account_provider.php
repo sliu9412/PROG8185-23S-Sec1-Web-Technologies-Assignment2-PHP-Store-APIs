@@ -89,7 +89,7 @@ function getUserByID($id) {
     $query_arr = $query->fetchAll(PDO::FETCH_ASSOC);
     if (count($query_arr) > 0) {
         $createdAccount = new UserAccount();
-        $createdAccount->id = $query_arr[0]["id"];
+        $createdAccount->id = intval($query_arr[0]["id"]);
         $createdAccount->username = $query_arr[0]["username"];
         $createdAccount->password = $query_arr[0]["password"];
         $createdAccount->province = $query_arr[0]["province"];
@@ -109,7 +109,7 @@ function getUserByEmail($email, $forLogin = true) {
     $query_arr = $query->fetchAll(PDO::FETCH_ASSOC);
     if (count($query_arr) > 0) {
         $createdAccount = new UserAccount();
-        $createdAccount->id = $query_arr[0]["id"];
+        $createdAccount->id = intval($query_arr[0]["id"]);
         $createdAccount->username = $query_arr[0]["username"];
         $createdAccount->password = $query_arr[0]["password"];
         $createdAccount->province = $query_arr[0]["province"];

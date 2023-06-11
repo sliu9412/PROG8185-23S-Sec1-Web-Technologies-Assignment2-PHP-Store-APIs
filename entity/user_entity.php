@@ -1,13 +1,13 @@
 <?php
 
 class UserAccount {
-    public $id;
-    public $username;
-    public $password;
-    public $province;
-    public $city;
-    public $zipcode;
-    public $email;
+    public int $id;
+    public string $username;
+    public string $password;
+    public string $province;
+    public string $city;
+    public string $zipcode;
+    public string $email;
 }
 
 ?>
