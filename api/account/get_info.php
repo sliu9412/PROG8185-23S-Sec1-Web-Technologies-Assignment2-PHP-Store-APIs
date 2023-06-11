@@ -6,8 +6,8 @@ function GetUserInfo()
 {
     header("Content-Type: JSON");
     $authorizationHeader = getJWTFromHeaders();
-    $tokenEmail = JwtValidator($authorizationHeader);
-    $user_info = getUserByEmail($tokenEmail);
+    $tokenID = JwtValidator($authorizationHeader);
+    $user_info = getUserByID($tokenID);
     JsonResponse("Get user information successfully", [
         "uid" => $user_info->id,
         "username" => $user_info->username,
