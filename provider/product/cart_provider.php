@@ -3,7 +3,7 @@ require_once("../../utils/connect_db.php");
 require_once("../../entity/product_entity.php");
 require_once("../../entity/cart_entity.php");
 
-function getCartByUserID($user_id) {
+function getCartByUserID($user_id): array {
     $table_name = "user_cart";
     $sql = "
         SELECT uc.quantity, p.* 
@@ -30,7 +30,7 @@ function getCartByUserID($user_id) {
     return $cartItems;
 }
 
-function createOrUpdateProductCart($user_id, $product_id, $quantity) {
+function createOrUpdateProductCart($user_id, $product_id, $quantity): int {
     $table = "user_cart";
     $strQuery = "
         INSERT INTO $table (user_id, product_id, quantity)
@@ -49,6 +49,16 @@ function createOrUpdateProductCart($user_id, $product_id, $quantity) {
     if ($quantity > 0) {
         $query->bindValue(":quantity", $quantity);
     }
+    $query->execute();
+    $rowCount = $query->rowCount();
+    return $rowCount;
+}
+
+function deleteCartByUserID($user_id) {
+    $table_name = "user_cart";
+    $sql = "DELETE FROM $table_name WHERE user_id = :user_id;";
+    $query = $GLOBALS["db"]->prepare($sql);
+    $query->bindValue(":user_id", $user_id);
     $query->execute();
     $rowCount = $query->rowCount();
     return $rowCount;

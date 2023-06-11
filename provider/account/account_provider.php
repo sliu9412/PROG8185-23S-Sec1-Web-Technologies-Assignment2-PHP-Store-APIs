@@ -8,7 +8,7 @@ function registerAccount(
     $province,
     $city,
     $zipcode,
-    $email) {
+    $email): UserAccount {
     // db table name
     $table_name = "userinfo";
     if ($username  && $password && $province && $city && $zipcode && $email) {
@@ -31,7 +31,7 @@ function registerAccount(
     }
 }
 
-function authenticateUser($email, $password) {
+function authenticateUser($email, $password): UserAccount {
     $table_name = "userinfo";
     $actualUser = getUserByEmail($email, true);
     // account is existed
@@ -51,7 +51,7 @@ function updateUserAccount(
     $password,
     $province,
     $city,
-    $zipcode) {
+    $zipcode): UserAccount {
     // db table name
     $table_name = "userinfo";
     if ($username  && $password && $province && $city && $zipcode && $email) {
@@ -71,7 +71,7 @@ function updateUserAccount(
     }
 }
 
-function checkDuplicatedAccount($email) {
+function checkDuplicatedAccount($email): int {
     $table_name = "userinfo";
     $email = $_POST["email"];
     $query = $GLOBALS["db"]->prepare("SELECT COUNT(email) as count FROM $table_name WHERE email = :email");
@@ -81,7 +81,7 @@ function checkDuplicatedAccount($email) {
     return intval($count);
 }
 
-function getUserByID($id) {
+function getUserByID($id): UserAccount {
     $table_name = "userinfo";
     $query = $GLOBALS["db"]->prepare("SELECT * FROM $table_name WHERE id = :id");
     $query->bindValue(":id", $id);
@@ -101,7 +101,7 @@ function getUserByID($id) {
     throw new Exception("User ID '$id' does not exists", 404);
 }
 
-function getUserByEmail($email, $forLogin = true) {
+function getUserByEmail($email, $forLogin = true): UserAccount {
     $table_name = "userinfo";
     $query = $GLOBALS["db"]->prepare("SELECT * FROM $table_name WHERE email = :email");
     $query->bindValue(":email", $email);

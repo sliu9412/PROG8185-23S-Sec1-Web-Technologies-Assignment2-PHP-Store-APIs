@@ -5,3 +5,5 @@ $GLOBALS["settings"] = [
 ];
 
 $GLOBALS["session"] = "XSESSION_USER";
+
+$GLOBALS["taxes"] = 0.13;

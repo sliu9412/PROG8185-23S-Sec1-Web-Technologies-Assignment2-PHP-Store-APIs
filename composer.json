@@ -9,9 +9,14 @@
         {
             "name": "sliu9412",
             "email": "sliu9412@conestogac.on.ca"
+        },
+        {
+            "name": "Econtreraslizan1632",
+            "email": "Econtreraslizan1632@conestogac.on.ca"
         }
     ],
     "require": {
-        "firebase/php-jwt": "^6.5"
+        "firebase/php-jwt": "^6.5",
+        "webpatser/laravel-uuid": "^4.0"
     }
 }

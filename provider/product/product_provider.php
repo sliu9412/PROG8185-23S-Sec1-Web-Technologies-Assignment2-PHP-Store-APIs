@@ -2,7 +2,7 @@
 require_once("../../utils/connect_db.php");
 require_once("../../entity/product_entity.php");
 
-function getAllProductsData()
+function getAllProductsData(): array
 {
     $table_name = "product";
     $sql = "SELECT * from $table_name;";
@@ -26,7 +26,7 @@ function getAllProductsData()
     return false;
 }
 
-function getProductsByID($product_id)
+function getProductsByID($product_id): Product
 {
     $table_name = "product";
     $query = $GLOBALS["db"]->prepare("SELECT * from $table_name WHERE id = :product_id");
