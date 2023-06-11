@@ -3,11 +3,11 @@
 require_once("../../vendor/autoload.php");
 
 use Firebase\JWT\JWT;
-// connect the database
 require_once("../../provider/account/account_provider.php");
 
 function CreateUser()
 {
+    header("Content-Type: JSON");
     $username = $_POST['username'];
     $password = $_POST['password'];
     $province = $_POST['province'];
