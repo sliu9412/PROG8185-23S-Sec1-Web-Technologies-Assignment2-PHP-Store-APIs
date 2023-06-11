@@ -1,4 +1,7 @@
 <?php
+require_once("jwt_validator.php");
+require_once("../../provider/account/account_provider.php");
+
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin:*");
 
@@ -21,10 +24,16 @@ function JsonResponse($message = "", $data = false, $status = 200)
 }
 
 // Wrap the code of API, to handle Exceptions
-function ApiWrapper(callable $func, $request_method = "POST", ...$args)
+function ApiWrapper(callable $func, $request_method = "POST", $jwt_validation = true, ...$args)
 {
     try {
         if ($_SERVER['REQUEST_METHOD'] == $request_method) {
+            if ($jwt_validation) {
+                $authorizationHeader = getJWTFromHeaders();
+                $tokenID = JwtValidator($authorizationHeader);
+                $user = getUserByID($tokenID);
+                $args[$GLOBALS["session"]] = $user;
+            }
             return $func(...$args);
         } else {
             JsonResponse("Error, Request Method should be $request_method", status: 400);

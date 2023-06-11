@@ -1,19 +1,17 @@
 <?php
-require_once("../../utils/jwt_validator.php");
-require_once("../../provider/account/account_provider.php");
+require_once("../../utils/json_response.php");
 
-function GetUserInfo()
+function GetUserInfo(...$args)
 {
     header("Content-Type: JSON");
-    $authorizationHeader = getJWTFromHeaders();
-    $tokenID = JwtValidator($authorizationHeader);
-    $user_info = getUserByID($tokenID);
+    // get user from JWT session
+    $user = $args[$GLOBALS["session"]];
     JsonResponse("Get user information successfully", [
-        "uid" => $user_info->id,
-        "username" => $user_info->username,
-        "provinces" => $user_info->province,
-        "city" => $user_info->city,
-        "email" => $user_info->email,
+        "uid" => $user->id,
+        "username" => $user->username,
+        "provinces" => $user->province,
+        "city" => $user->city,
+        "email" => $user->email,
     ]);
 }
 

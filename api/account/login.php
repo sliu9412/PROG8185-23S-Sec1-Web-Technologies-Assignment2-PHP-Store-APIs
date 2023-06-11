@@ -23,4 +23,4 @@ function LoginAccount()
     }
 }
 
-ApiWrapper("LoginAccount");
+ApiWrapper("LoginAccount", "POST", false);

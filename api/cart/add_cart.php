@@ -1,19 +1,15 @@
 <?php
-require_once("../../utils/jwt_validator.php");
-require_once("../../provider/account/account_provider.php");
 require_once("../../provider/product/product_provider.php");
 require_once("../../provider/product/cart_provider.php");
 
-function AddProductToCart()
+function AddProductToCart(...$args)
 {
     // retrieves raw json data
     $inputData = file_get_contents('php://input');
     $cartData = json_decode($inputData, true);
     header("Content-Type: JSON");
     // get user from JWT session
-    $authorizationHeader = getJWTFromHeaders();
-    $tokenID = JwtValidator($authorizationHeader);
-    $user = getUserByID($tokenID);
+    $user = $args[$GLOBALS["session"]];
     if (isset($cartData["product_id"]) 
         && isset($cartData["quantity"])
         && is_numeric($cartData['quantity'])

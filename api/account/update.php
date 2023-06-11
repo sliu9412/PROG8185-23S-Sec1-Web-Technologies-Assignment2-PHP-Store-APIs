@@ -1,16 +1,15 @@
 <?php
-require_once("../../utils/jwt_validator.php");
 require_once("../../provider/account/account_provider.php");
 
-function UpdateAccount()
+function UpdateAccount(...$args)
 {
+    // get user from JWT session
+    $user = $args[$GLOBALS["session"]];
     // retrieves raw json data
     $inputData = file_get_contents('php://input');
     $putData = json_decode($inputData, true);
     // retrieves and validate JWT
     header("Content-Type: JSON");
-    $authorizationHeader = getJWTFromHeaders();
-    $tokenID = JwtValidator($authorizationHeader);
     $email = $putData['email'];
     $username = $putData['username'];
     $password = $putData['password'];
@@ -20,7 +19,7 @@ function UpdateAccount()
 
     if ($username  && $password && $province && $city && $zipcode && $email) {
         $updatedAccount = updateUserAccount(
-            $tokenID,
+            $user->id,
             $email,
             $username,
             $password,
@@ -28,7 +27,7 @@ function UpdateAccount()
             $city,
             $zipcode
         );
-        JsonResponse("Create Account Successfully", [
+        JsonResponse("Account Successfully Updated", [
             "uid" => $updatedAccount->id,
             "username" => $updatedAccount->username,
             "province" => $updatedAccount->province,

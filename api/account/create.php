@@ -1,12 +1,12 @@
 <?php
 // Import json web token
 require_once("../../vendor/autoload.php");
-
 use Firebase\JWT\JWT;
 require_once("../../provider/account/account_provider.php");
 
 function CreateUser()
 {
+    // get user from JWT session
     header("Content-Type: JSON");
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -21,11 +21,11 @@ function CreateUser()
         "email" => $createdAccount->email,
     ], $GLOBALS["settings"]["jwt_key"], $GLOBALS["settings"]["jwt_alg"]);
     
-    JsonResponse("Create Account Successfully", [
+    JsonResponse("Account Successfully Created", [
         "uid" => $createdAccount->id,
         "username" => $createdAccount->username,
         "jwt" => $jwt
     ]);
 }
 
-ApiWrapper("CreateUser");
+ApiWrapper("CreateUser", "POST", false);
