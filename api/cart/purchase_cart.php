@@ -6,7 +6,7 @@ function PurchaseCart(...$args) {
     // get user from JWT session
     $user = $args[$GLOBALS["session"]];
     $userCart = purchaseShoppingCart($user->id);
-    JsonResponse("Shopping Cart Successful Updated", [
+    JsonResponse("Shopping Cart Successful Purchased", [
         "cart" => $userCart
     ]);
 }
