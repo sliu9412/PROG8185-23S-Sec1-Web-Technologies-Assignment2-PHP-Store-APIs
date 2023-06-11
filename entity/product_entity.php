@@ -8,4 +8,8 @@ class Product {
     public $description;
 }
 
+class ProductCart extends Product {
+    public $quantity;
+}
+
 ?>

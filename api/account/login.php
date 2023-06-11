@@ -18,7 +18,9 @@ function LoginAccount()
             "username" => $authenticatedUser->username,
             "jwt" => $jwt,
         ]);
-    }  
+    } else {
+        throw new Exception("Invalid request", 500);
+    }
 }
 
 ApiWrapper("LoginAccount");
