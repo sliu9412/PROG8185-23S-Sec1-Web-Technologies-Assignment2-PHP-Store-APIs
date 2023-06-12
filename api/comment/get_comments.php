@@ -1,10 +1,10 @@
 <?php
-require_once("../../provider/comment/comment_provider.php");
+require_once("../../provider/comment/commentImage_provider.php");
 
 function CommentDisplayByProduct(...$args)
 {
     header("Content-Type: JSON");
-    
+
 
 
     $response = getCommentForTheProduct($product_id);
