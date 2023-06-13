@@ -5,7 +5,7 @@ function CommentDisplayByProduct(...$args)
 {
     header("Content-Type: JSON");
 
-
+    $product_id = htmlspecialchars($_GET["product_id"]) ;
 
     $response = getCommentForTheProduct($product_id);
     if($response){

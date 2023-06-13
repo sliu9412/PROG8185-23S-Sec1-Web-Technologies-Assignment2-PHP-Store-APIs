@@ -13,7 +13,8 @@ class Comment
         $product_id = 0,
         $user_id = 0,
         $comment = "",
-        $date = date("Y-m-d H:i:s"), $rating = 0)
+        $date = "", 
+        $rating = 0)
     {
         $this->id = $id;
         $this->product_id = $product_id;
