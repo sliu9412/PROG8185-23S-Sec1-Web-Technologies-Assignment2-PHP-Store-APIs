@@ -4,7 +4,6 @@ require_once("../../entity/product_entity.php");
 require_once("../../entity/cart_entity.php");
 
 function getCartByUserID($user_id): array {
-    $table_name = "user_cart";
     $sql = "
         SELECT uc.quantity, p.* 
         FROM product p INNER JOIN user_cart uc 

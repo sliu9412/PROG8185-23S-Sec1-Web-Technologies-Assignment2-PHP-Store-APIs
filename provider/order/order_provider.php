@@ -1,6 +1,7 @@
 <?php
 require_once("../../utils/connect_db.php");
 require_once("../../entity/cart_entity.php");
+require_once("../../entity/order_entity.php");
 
 function purchaseCartOrder(array $purchasedOrder): int {
     $table_name = "purchased_order";
@@ -63,6 +64,37 @@ function rollbackOrders(array $ordersId) {
             error_log("Error deleting '$order_id' from $table_name. $e");
         }
     }
+}
+
+function getOrderHistory(int $user_id): array {
+    $sql = '
+        SELECT trx_id
+            , sum(quantity) as total_quantity
+            , sum(total_price) as total_price
+            , sum(total_taxes) as total_taxes
+            , sum(shipping_price) as total_shipping
+            , max(date) order_date
+        FROM purchased_order 
+        WHERE user_id = :user_id
+        GROUP BY trx_id;
+    ';
+    $query = $GLOBALS["db"]->prepare($sql);
+    $query->bindParam(':user_id', $user_id);
+    $query->execute();
+    $purchaseHistory = array();
+    if($query){
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $purchased = new PurchaseHistory();
+            $purchased->trx_id = $row['trx_id'];
+            $purchased->total_quantity = intval($row['total_quantity']);
+            $purchased->total_price = floatval($row['total_price']);
+            $purchased->total_taxes = floatval($row['total_taxes']);
+            $purchased->total_shipping = floatval($row['total_shipping']);
+            $purchased->order_date = $row['order_date'];
+            $purchaseHistory[] = $purchased;
+        }
+    }
+    return $purchaseHistory;
 }
 
 ?>
