@@ -18,7 +18,7 @@ function CreateUser()
     $createdAccount = registerAccount($username, $password, $province, $city, $zipcode, $email);
 
     $jwt = JWT::encode([
-        "email" => $createdAccount->email,
+        "uid" => $createdAccount->id,
     ], $GLOBALS["settings"]["jwt_key"], $GLOBALS["settings"]["jwt_alg"]);
     
     JsonResponse("Account Successfully Created", [
