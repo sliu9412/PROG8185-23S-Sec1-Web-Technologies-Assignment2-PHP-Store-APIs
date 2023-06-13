@@ -13,5 +13,4 @@ function ProductDisplay()
     }
 }
 
-ApiWrapper("ProductDisplay", "GET");
-?>
+ApiWrapper("ProductDisplay", "GET", false);
