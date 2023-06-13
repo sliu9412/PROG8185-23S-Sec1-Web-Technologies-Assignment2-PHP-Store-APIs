@@ -1,5 +1,5 @@
 <?php
-require_once("../../provider/comment/commentImage_provider.php");
+require_once("../../provider/comment/comment_provider.php");
 
 function CommentDisplayByProduct(...$args)
 {
