@@ -1,13 +1,12 @@
 <?php
 require_once("../../provider/comment/comment_provider.php");
 
-function CommentDisplayByUser(...$args)
+function CommentImagesDisplay(...$args)
 {
     header("Content-Type: JSON");
-    $user = $args[$GLOBALS["session"]];
+    
 
-
-    $response = getCommentForTheUser($user->id);
+    $response = getCommentImages($comment_id);
     if($response){
         echo json_encode($response, JSON_PRETTY_PRINT);
     }
@@ -16,4 +15,5 @@ function CommentDisplayByUser(...$args)
     }
 }
 
-ApiWrapper("CommentDisplayByUser", "GET");
+ApiWrapper("CommentImagesDisplay", "GET");
+?>

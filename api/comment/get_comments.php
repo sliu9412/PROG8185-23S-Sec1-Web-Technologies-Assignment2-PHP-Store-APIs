@@ -1,12 +1,9 @@
 <?php
-require_once("../../provider/comment/comment_provider.php");
+require_once("../../provider/comment/commentImage_provider.php");
 
 function CommentDisplayByProduct(...$args)
 {
     header("Content-Type: JSON");
-
-    $product_id = htmlspecialchars($_GET["product_id"]);
-
     $response = getCommentForTheProduct($product_id);
     if($response){
         echo json_encode($response, JSON_PRETTY_PRINT);
@@ -17,4 +14,3 @@ function CommentDisplayByProduct(...$args)
 }
 
 ApiWrapper("CommentDisplayByProduct", "GET");
-?>
